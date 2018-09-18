@@ -1,0 +1,21 @@
+<Alloy>
+	<View class="size vgroup" formFactor="tablet">
+		<View id="containerView" height="150" width="450" backgroundColor="#fff" borderRadius="5" layout="vertical" borderColor="gray">
+			<View id="signView"  class="size"></View>
+			<!--<Require type="view" src="signDrawingPanel"></Require>-->		
+	        
+		</View>	
+		<View id="btnPanel"  class="size" left="0" backgroundColor="#fff">
+            <Button class="btn btnClear" id="btnClear" onClick="clearSign" accessibilityLabel="clearSignature" accessibilityHint="Clear Signature">Signature Box</Button>
+        </View>
+     </View>
+     <View class="size vgroup" formFactor="handheld">
+		<View id="containerView" height="150" width="350" backgroundColor="#fff" borderRadius="5" layout="vertical" borderColor="gray">
+			<View id="signView"  class="size"></View>
+			<!--<Require type="view" src="signDrawingPanel"></Require>-->
+		</View>
+		<View id="btnPanel"  class="size" left="0" backgroundColor="#fff">
+            <Button class="btn btnClear" id="btnClear" onClick="clearSign" accessibilityLabel="clearSignature" accessibilityHint="Clear Signature">Signature Box</Button>
+        </View>
+     </View>
+</Alloy>

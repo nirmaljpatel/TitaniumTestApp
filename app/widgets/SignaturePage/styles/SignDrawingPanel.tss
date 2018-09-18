@@ -1,0 +1,10 @@
+
+"#middleContentSection" : {
+  
+}
+"#signatureWebView" : {
+  url: WPATH('signature/signature.html')
+}
+"#webViewContainer" : {
+  
+}

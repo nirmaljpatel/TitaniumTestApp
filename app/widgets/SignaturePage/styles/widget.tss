@@ -1,0 +1,116 @@
+"#capturelbl":{
+	color:"#5d5d5d",
+	font: {
+	        fontFamily:'Helvetica',
+			fontSize: "20"
+	 	}
+	 }
+	 "#orderDetail":{
+	 	top:"2%",
+	 	left:"0%",
+	 	color:"black",
+	 	font: {
+	        fontFamily:'Helvetica',
+			fontSize: "15"
+	 	}
+	 }
+"#orderDetailValue":{
+	top:"3%",
+	left:"44%",
+	color:"#5d5d5d",
+	 	font: {
+	        fontFamily:'Helvetica',
+			fontSize: "24"
+	 	}
+	
+}
+".contentUnderLineUnderline1":{
+	height:"2",
+		backgroundColor:"gray",
+		left:"43%",
+		right:"10%" ,
+		top:"90%",//chnage
+		bottom:"4"
+}
+".contentUnderLineUnderline2":{
+	height:"2",
+		backgroundColor:"gray",
+		left:"0%",
+		right:"10%" ,
+		top:"0%",//chnage
+		bottom:"4"
+	
+}
+"#label1":{
+	//borderColor:"white",
+	color:"#5d5d5d",
+	font: {
+			fontColor:'#5d5d5d',
+	        fontFamily:'Helvetica',
+			fontSize: "15"
+	 	}
+}
+"#label2":{
+	//borderColor:"white",
+	color:"#5d5d5d",
+	font: {
+			fontColor:"#5d5d5d",
+	        fontFamily:'Helvetica',
+			fontSize: "15"
+	 	}
+}
+".cameraButton":{
+	image : "images/icons/camerabutton.png",
+		height : "90%",
+		width:"10%",
+		centre:"1%",
+		top:"5%",
+		bottom:"5%"
+}
+"#clearbtn":{
+	text:"Clear",
+	font: {
+			fontColor:'red',
+	        fontFamily:'Helvetica',
+			fontSize: "15"
+	 	}
+}
+"#savebtn":{
+	text:"save",
+	font: {
+			fontColor:'green',
+	        fontFamily:'Helvetica',
+			fontSize: "15"
+	 	}
+}
+"#closeIcon":{
+	image : 'images/icons/closeButton.png',
+		top : "20%",
+		left : "90%",
+		width : "4%",
+		height : "60%"
+
+}
+'.btnc': {
+	font: {
+    	fontSize:"16",
+		fontFamily:"Arial",
+		fontWeight: 'bold'
+	},
+	left:"0%",
+	height: "40",
+	width: "170",
+	color:"white",
+	borderRadius :"5"
+},
+"#btnPanel":{
+	top: "2%",
+	height:"40",
+	bottom: "2%",
+}
+"#btnClear": {
+	left: "0%",
+	height:"40",
+	width:"170",
+	borderRadius:"5"
+	}	

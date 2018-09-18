@@ -1,0 +1,142 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<meta name ='viewport' content ='user-scalable=no'>
+		<link rel="stylesheet" href="signature.css" />
+
+	</head>
+	<body>
+		<div id="sketch" >
+			<canvas id="paint"></canvas>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+		var eventStart = mobile ? "touchstart" : "mousedown";
+		var eventEnd = mobile ? "touchend" : "mouseup";
+		var eventMove = mobile ? "touchmove" : "mousemove";
+		var canvas;
+		var ctx;
+		//Ti.App.fireEvent('weblog', {log:'webview message' });
+		var dirty = false;
+
+		( function() {
+			
+				document.body.addEventListener('touchmove', function(event) {
+	  			event.preventDefault();
+				}, false);
+
+				Ti.App.addEventListener("app:signatureClear", function(e) {
+					//Ti.App.fireEvent('weblog', {log:e.message });
+					clearSignature();
+					dirty = false;
+				});
+
+				Ti.App.addEventListener("app:signatureSave", function(e) {
+					Ti.App.fireEvent('weblog', {
+						log : e.message
+					});
+					saveSignature();
+				});
+
+				Ti.App.addEventListener("app:dropdown", function(e) {
+					//Ti.App.fireEvent('weblog', {log:e.message });
+					dropdown();
+				});
+
+				canvas = document.querySelector('#paint');
+				ctx = canvas.getContext('2d');
+
+				var sketch = document.querySelector('#sketch');
+				var sketch_style = getComputedStyle(sketch);
+				canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+				canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+
+				var mouse = {
+					x : 0,
+					y : 0
+				};
+
+				/* Mouse Capturing Work */
+				canvas.addEventListener(eventMove, function(e) {
+					// alert("addEventListener eventMove ");
+					//Ti.App.fireEvent('weblog', {log:'addEventListener eventMove' });
+					mouse.x = e.pageX - this.offsetLeft;
+					mouse.y = e.pageY - this.offsetTop;
+					//Ti.App.fireEvent('weblog', {log:'addEventListener eventMove:'+"mouse.x:"+mouse.x+":mouse.y:"+mouse.y });
+				}, false);
+
+				/* Drawing on Paint App */
+				ctx.lineWidth = 5;
+				ctx.lineJoin = 'round';
+				ctx.lineCap = 'round';
+				ctx.strokeStyle = 'black';
+
+				canvas.addEventListener(eventStart, function(e) {
+					//Ti.App.fireEvent('weblog', {log:'addEventListener beginPath first:'+"mouse.x:"+mouse.x+":mouse.y:"+mouse.y });
+					Ti.App.fireEvent('app:signCompletion', { });
+					ctx.moveTo(mouse.x, mouse.y);
+					ctx.beginPath();
+					//	Ti.App.fireEvent('weblog', {log:'eventStart: addEventListener eventMove' });
+					//alert("eventStart: addEventListener eventMove");
+					canvas.addEventListener(eventMove, onPaint, false);
+					dirty = true;
+				}, false);
+
+				canvas.addEventListener(eventEnd, function() {
+					//alert("eventEnd: removing eventMove");
+					//Ti.App.fireEvent('weblog', {log:'eventEnd: removing eventMove' });
+					
+					canvas.removeEventListener(eventMove, onPaint, false);
+					sendSign();
+					dirty = true;
+				}, false);
+
+				var onPaint = function() {
+					ctx.lineTo(mouse.x, mouse.y);
+					ctx.stroke();
+				};
+
+				var clearSignature = function() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+				};
+				var saveSignature = function() {
+
+					var signString = null;
+					if (dirty) {
+						signString = canvas.toDataURL("image/png");
+					}
+
+					Ti.App.fireEvent('app:saveSign', {
+						inputArray : signString
+					});
+
+				};
+				var dropdown = function() {
+					//var signString= canvas.toDataURL("image/png");
+					//alert("signString"+signString);
+					Ti.App.fireEvent('app:dropdownSign', { });
+
+				};
+				
+				var sendSign = function() {
+
+					var signString = canvas.toDataURL("image/png");
+
+					Ti.App.fireEvent('app:getSign', {
+						sign : signString
+					});
+
+				};
+				
+				document.getElementById('clear').addEventListener('click', function() {
+					clearSignature();
+				}, false);
+
+			}());
+
+	</script>
+</html>

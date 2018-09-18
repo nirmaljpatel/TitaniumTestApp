@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="middleContentSection" height="100%" width="100%" top="0%" bottom="0%" backgroundColor="white">
+		<View id="webViewContainer" height="99%" width="99%" top="1%" left="1%" right="1%" backgroundColor="white">
+			<WebView id="signatureWebView" left="0%"  disableBounce="true" willHandleTouches="false" bubbleParent="false">
+			</WebView>
+		</View>		
+	</View>	
+</Alloy>

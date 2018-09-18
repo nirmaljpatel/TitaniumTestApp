@@ -1,0 +1,25 @@
+<Alloy>
+	<Window class="container">
+		<ScrollView  height="Ti.UI.FILL" width="Ti.UI.FILL">
+			<View layout="vertical">
+				<View backgroundColor="red" height="200" width="Ti.UI.FILL">
+				</View>	
+				<View backgroundColor="green" height="200" width="Ti.UI.FILL">
+					<View  backgroundColor="white" height="150" width="300">
+						<Widget bubbleParent="false" class="SignWidgetContainer" id="widSign" src="SignaturePage" />
+					</View>
+				</View>
+				<View backgroundColor="yellow" height="200" width="Ti.UI.FILL">
+				</View>
+				<View backgroundColor="red" height="200" width="Ti.UI.FILL">
+				</View>
+				<View backgroundColor="green" height="200" width="Ti.UI.FILL">
+				</View>
+				<View backgroundColor="yellow" height="200" width="Ti.UI.FILL">
+				</View>
+				<View backgroundColor="red" height="200" width="Ti.UI.FILL">
+				</View>
+			</View>
+		</ScrollView>
+	</Window>
+</Alloy>
